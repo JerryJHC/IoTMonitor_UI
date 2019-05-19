@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Chart } from "chart.js";
 import { ChartConfig } from "../../models/ChartConfig";
 
@@ -9,7 +9,7 @@ import { ChartConfig } from "../../models/ChartConfig";
 })
 export class ChartTemplateComponent implements OnInit {
 
-  ChartConfig: ChartConfig;
+  @Input() ChartConfig: ChartConfig;
 
   Chart: Chart;
 
@@ -18,14 +18,7 @@ export class ChartTemplateComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.ChartConfig = {
-      title: "Test Chart",
-      labels: ["A", "B", "C"],
-      data: [10, 20, 30]
-    };
-
     this.createChart();
-
   }
 
   createChart() {
