@@ -1,24 +1,24 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Chart } from "chart.js";
-import { ChartTemplate } from "../../models/ChartTemplate";
+import { ChartConfig } from "../../models/ChartConfig";
 
 @Component({
-  selector: 'app-charts',
-  templateUrl: './charts.component.html',
-  styleUrls: ['./charts.component.css']
+  selector: 'app-charttemplate',
+  templateUrl: './charttemplate.component.html',
+  styleUrls: ['./charttemplate.component.css']
 })
-export class ChartsComponent implements OnInit {
+export class ChartTemplateComponent implements OnInit {
 
-  ChartTemplate: ChartTemplate;
+  ChartConfig: ChartConfig;
 
   Chart: Chart;
 
-  @ViewChild('myChart') myChart: ElementRef;
+  @ViewChild('chartTag') ChartTag: ElementRef;
 
   constructor() { }
 
   ngOnInit() {
-    this.ChartTemplate = {
+    this.ChartConfig = {
       title: "Test Chart",
       labels: ["A", "B", "C"],
       data: [10, 20, 30]
@@ -29,13 +29,13 @@ export class ChartsComponent implements OnInit {
   }
 
   createChart() {
-    this.Chart = new Chart(this.myChart.nativeElement, {
+    this.Chart = new Chart(this.ChartTag.nativeElement, {
       type: 'bar',
       data: {
-        labels: this.ChartTemplate.labels,
+        labels: this.ChartConfig.labels,
         datasets: [{
-          label: this.ChartTemplate.title,
-          data: this.ChartTemplate.data,
+          label: this.ChartConfig.title,
+          data: this.ChartConfig.data,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
