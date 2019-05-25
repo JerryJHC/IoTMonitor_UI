@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrentMeasure } from '../../models/CurrentMeasure';
+import { FirebaseDataService } from '../../services/firebasedata.service'
 
 @Component({
   selector: 'app-current-measure',
@@ -8,12 +9,14 @@ import { CurrentMeasure } from '../../models/CurrentMeasure';
 })
 export class CurrentMeasureComponent implements OnInit {
 
-  currentMeasure: CurrentMeasure;
+  currentMeasure: CurrentMeasure = { datetime: new Date(), temperature: 20, humidity: 10, pressure: 900 };
 
-  constructor() { }
+  constructor(private firebaseData: FirebaseDataService) { }
 
   ngOnInit() {
-    this.currentMeasure = { datetime : new Date() , temperature : 20 , humidity : 10 , pressure : 900 };
+    this.firebaseData.getTemperature().subscribe(temperature => {
+      this.currentMeasure.temperature = temperature.value;
+    });
   }
 
 }
