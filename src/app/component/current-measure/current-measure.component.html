@@ -1,3 +1,8 @@
-<p>
-  current-measure works!
-</p>
+<div class="center">
+  <h1>Ultima medida : {{ currentMeasure.datetime.getHours() }}:{{ currentMeasure.datetime.getMinutes() }}</h1>
+  <p>
+    Temperatura : {{ currentMeasure.temperature }} º C
+    Humedad : {{ currentMeasure.humidity }} %
+    Presión : {{ currentMeasure.pressure }} mb
+  </p>
+</div>

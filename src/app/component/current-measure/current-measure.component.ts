@@ -8,9 +8,12 @@ import { CurrentMeasure } from '../../models/CurrentMeasure';
 })
 export class CurrentMeasureComponent implements OnInit {
 
+  currentMeasure: CurrentMeasure;
+
   constructor() { }
 
   ngOnInit() {
+    this.currentMeasure = { datetime : new Date() , temperature : 20 , humidity : 10 , pressure : 900 };
   }
 
 }

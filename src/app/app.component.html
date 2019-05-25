@@ -1,7 +1,11 @@
-<div class="d-flex justify-content-center">
+<div class="container-fluid">
   <div class="spinner-border" role="status">
     <span class="sr-only">Loading...</span>
   </div>
+
+  <!-- Current Measure -->
+  <app-current-measure></app-current-measure>
+  <!-- Current Measure -->
 
   <!-- Charts -->
   <app-charttemplate [ChartConfig]='{title: "Test Chart",labels: ["A", "B", "C"],data: [10, 20, 30]}'></app-charttemplate>
