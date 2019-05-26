@@ -1,5 +1,5 @@
 export class CurrentMeasure {
-    datetime: Date;
+    datetime: string;
     temperature: number;
     humidity: number;
     pressure: number;

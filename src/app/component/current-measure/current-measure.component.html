@@ -1,8 +1,23 @@
-<div class="center">
-  <h1>Ultima medida : {{ currentMeasure.datetime.getHours() }}:{{ currentMeasure.datetime.getMinutes() }}</h1>
-  <p>
-    Temperatura : {{ currentMeasure.temperature }} º C
-    Humedad : {{ currentMeasure.humidity }} %
-    Presión : {{ currentMeasure.pressure }} mb
-  </p>
+<div class="container">
+  <div class="d-flex flex-row">
+    <!-- Loading icon -->
+    <div [ngClass]="setClasses()">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <!-- Loading icon -->
+    <!-- DateTime -->
+    <h1 class="text-left">
+    Ultima medida : {{ currentMeasure.datetime }}
+    </h1>
+  </div>
+
+  <!-- Measures -->
+  <div class="d-flex flex-row">
+    <div class="p-2">Temperatura : {{ currentMeasure.temperature }} ºC</div>
+    <div class="p-2">Humedad : {{ currentMeasure.humidity }} %</div>
+    <div class="p-2">Presión : {{ currentMeasure.pressure }} mb</div>
+  </div>
+
 </div>

@@ -12,8 +12,18 @@ export class FirebaseDataService {
 
   constructor(private http: HttpClient) { }
 
-  getTemperature(): Observable<SingleMeasure> {
-    return this.http.get<SingleMeasure>(this.baseUrl + "/temperature");
+  //Ask for the last measure registered
+  getLastTemperature(): Observable<SingleMeasure[]> {
+    return this.http.get<SingleMeasure[]>(this.baseUrl + "/temperature");
   }
+
+  getLastHumidity(): Observable<SingleMeasure[]> {
+    return this.http.get<SingleMeasure[]>(this.baseUrl + "/humidity");
+  }
+
+  getLastPressure(): Observable<SingleMeasure[]> {
+    return this.http.get<SingleMeasure[]>(this.baseUrl + "/pressure");
+  }
+  //Ask for the last measure registered
 
 }
