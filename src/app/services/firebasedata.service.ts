@@ -1,7 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 import { SingleMeasure } from '../models/SingleMeasure';
-import { Observable } from 'rxjs'
+import { TimeRequest } from '../models/TimeRequest';
+
+const httpOptions = {
+  headers : new HttpHeaders({
+    'Content-Type' : 'application/json'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +34,10 @@ export class FirebaseDataService {
     return this.http.get<SingleMeasure[]>(this.baseUrl + "/pressure");
   }
   //Ask for the last measure registered
+
+  //Ask for an interval
+  getTemperatures(interval: TimeRequest): Observable<SingleMeasure[]>{
+    return this.http.post<SingleMeasure[]>(this.baseUrl + "/temperature", interval, httpOptions);
+  }
 
 }
