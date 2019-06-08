@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChartTemplateComponent } from './components/charttemplate/charttemplate.component';
-import { CurrentMeasureComponent } from './component/current-measure/current-measure.component';
+import { CurrentMeasureComponent } from './components/current-measure/current-measure.component';
 
 @NgModule({
   declarations: [
