@@ -1,23 +1,26 @@
 <div class="container">
   <div class="d-flex flex-row">
-    <!-- Loading icon -->
-    <div [ngClass]="setClasses()">
-      <div class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
-    <!-- Loading icon -->
+
     <!-- DateTime -->
-    <h1 class="text-left">
-    Ultima medida : {{ currentMeasure.datetime }}
-    </h1>
+    <h3 class="text-left">
+      Actualizado : {{ currentMeasure.datetime }}
+    </h3>
+    <!-- DateTime -->
+
+    <!-- Refresh button -->
+    <button class="btn btn-primary ml-5" type="button" (click)="getLatestMeasures()">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" [ngClass]="setClasses()"></span>
+      Recargar
+    </button>
+    <!-- Refresh button -->
   </div>
 
   <!-- Measures -->
   <div class="d-flex flex-row">
-    <div class="p-2">Temperatura : {{ currentMeasure.temperature }} ºC</div>
-    <div class="p-2">Humedad : {{ currentMeasure.humidity }} %</div>
-    <div class="p-2">Presión : {{ currentMeasure.pressure }} mb</div>
+    <div class="p-2">Temperatura : <strong>{{ currentMeasure.temperature }} ºC</strong></div>
+    <div class="p-2">Humedad : <strong>{{ currentMeasure.humidity }} %</strong></div>
+    <div class="p-2">Presión : <strong>{{ currentMeasure.pressure }} mb</strong></div>
   </div>
+  <!-- Measures -->
 
 </div>
