@@ -17,42 +17,50 @@ export class ChartTemplateComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-    this.createChart();
-  }
+  ngOnInit() { }
 
   createChart() {
     this.Chart = new Chart(this.ChartTag.nativeElement, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: this.ChartConfig.labels,
         datasets: [{
-          label: this.ChartConfig.title,
+          label: this.ChartConfig.dataLabel,
           data: this.ChartConfig.data,
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
+          backgroundColor: 'tomato',
+          borderWidth: 1,
+          borderColor: 'red',
+          fill: true
         }]
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        title: {
+          display: true,
+          text: this.ChartConfig.title
+        },
+        tooltips: {
+          mode: 'index',
+          intersect: false,
+        },
+        hover: {
+          mode: 'nearest',
+          intersect: true
+        },
         scales: {
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: this.ChartConfig.xAxesLabel
+            }
+          }],
           yAxes: [{
-            ticks: {
-              beginAtZero: true
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: this.ChartConfig.yAxesLabel
             }
           }]
         }

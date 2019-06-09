@@ -1,8 +1,18 @@
 <div class="container">
-  <!--Charts-->
-  <h1>Chart</h1>
-  <app-charttemplate [ChartConfig]="hourly">
-  </app-charttemplate>
+
+  <!-- Historic Charts -->
+  <!-- Temperature -->
+  <h1>Histórico Temperatura</h1>
+  <app-charttemplate [ChartConfig]="intervalTemperature" #intervalTemperatureChart></app-charttemplate>
+
+  <!-- Humidity -->
+  <h1>Histórico Humedad</h1>
+  <app-charttemplate [ChartConfig]="intervalHumidity" #intervalHumidityChart></app-charttemplate>
+
+  <!-- Pressure -->
+  <h1>Histórico Presión</h1>
+  <app-charttemplate [ChartConfig]="intervalPressure" #intervalPressureChart></app-charttemplate>
+  <!-- Hourly Charts -->
 
   <!--Charts-->
 </div>
