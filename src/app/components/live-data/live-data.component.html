@@ -1,6 +1,13 @@
 <div class="container">
   <!-- Live chart -->
-  <h1>Datos en vivo</h1>
+  <div class="d-flex flex-row">
+    <h1>Datos en vivo</h1>
+    <select class="ml-5" (change)="changeSource($event)">
+      <option value="1">Temperatura</option>
+      <option value="2">Humedad</option>
+      <option value="3">Presión</option>
+    </select>
+  </div>
   <app-charttemplate #liveDataChart></app-charttemplate>
   <!-- Live chart -->
 </div>
