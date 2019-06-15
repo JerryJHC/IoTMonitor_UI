@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ChartTemplateComponent } from './components/charttemplate/charttemplate.component';
 import { CurrentMeasureComponent } from './components/current-measure/current-measure.component';
 import { IntervalMeasureComponent } from './components/interval-measure/interval-measure.component';
+import { LiveDataComponent } from './components/live-data/live-data.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChartTemplateComponent,
     CurrentMeasureComponent,
-    IntervalMeasureComponent
+    IntervalMeasureComponent,
+    LiveDataComponent
   ],
   imports: [
     BrowserModule,
