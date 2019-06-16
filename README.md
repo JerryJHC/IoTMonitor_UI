@@ -1,4 +1,4 @@
-#IoTMonitor
+# IoTMonitor
 
 Internet of Things (IoT) brings us to the concept of remote communication of sensors that monitor real-world objects through the Internet. This IoT project focuses on monitoring the temperature, pressure and humidity of a place using the Raspberry Pi and its SenseHat add-on with its set of sensors.
 
