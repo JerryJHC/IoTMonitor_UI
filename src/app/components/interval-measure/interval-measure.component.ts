@@ -18,21 +18,21 @@ export class IntervalMeasureComponent implements OnInit {
 
   @ViewChild('intervalTemperatureChart') intervalTemperatureChart: ChartTemplateComponent;
 
-  loadedIntervalT: boolean = false;
+  loadedIntervalT: boolean;
 
   // Humidity
   intervalHumidity: ChartConfig = { data: [], labels: [], title: "", dataLabel: "Humedad", xAxesLabel: "Hora", yAxesLabel: "Humedad" };
 
   @ViewChild('intervalHumidityChart') intervalHumidityChart: ChartTemplateComponent;
 
-  loadedIntervalH: boolean = false;
+  loadedIntervalH: boolean;
 
   //Pressure
   intervalPressure: ChartConfig = { data: [], labels: [], title: "", dataLabel: "Presión", xAxesLabel: "Hora", yAxesLabel: "Presión" };
 
   @ViewChild('intervalPressureChart') intervalPressureChart: ChartTemplateComponent;
 
-  loadedIntervalP: boolean = false;
+  loadedIntervalP: boolean;
 
   constructor(private fireBaseDataService: FirebaseDataService) { }
 
@@ -43,20 +43,53 @@ export class IntervalMeasureComponent implements OnInit {
     this.loadPressure(timeRequest);
   }
 
+  //Handle button event
+  loadMeasure(measure: Measures) {
+    //Get inputs
+    let sufix: string = measure == Measures.Temperature ? "T" : measure == Measures.Humidity ? "H" : "P";
+    let inputStart: any = document.querySelector("input[name=inputStart" + sufix + "]");
+    let inputEnd: any = document.querySelector("input[name=inputEnd" + sufix + "]");
+    //Validate datetimes
+    if (inputStart.value == "") {
+      alert("No se asigno correctamente la fecha y hora de inicio");
+      return;
+    }
+    if (inputEnd.value == "") {
+      alert("No se asigno correctamente la fecha y hora de fin");
+      return;
+    }
+    //Perform a request with the interval
+    let timeRequest: TimeRequest = { startDateTime: new Date(inputStart.value), endDateTime: new Date(inputEnd.value) };
+    switch (sufix) {
+      case "T":
+        this.loadTemperature(timeRequest);
+        break;
+      case "H":
+        this.loadHumidity(timeRequest);
+        break;
+      case "P":
+        this.loadPressure(timeRequest);
+        break;
+    }
+  }
+
   //Temperature
   loadTemperature(timeRequest: TimeRequest) {
+    this.loadedIntervalT = false;
     this.intervalTemperature.title = this.formatDateTime(timeRequest.startDateTime.toISOString()) + ' - ' + this.formatDateTime(timeRequest.endDateTime.toISOString());
     this.fireBaseDataService.getTemperatures(timeRequest).subscribe(data => this.loadedIntervalT = this.configureChart(data, this.intervalTemperature, this.intervalTemperatureChart), err => setTimeout(() => this.loadTemperature(timeRequest), 10 * 1000));
   }
 
   //Humidity
   loadHumidity(timeRequest: TimeRequest) {
+    this.loadedIntervalH = false;
     this.intervalHumidity.title = this.formatDateTime(timeRequest.startDateTime.toISOString()) + ' - ' + this.formatDateTime(timeRequest.endDateTime.toISOString());
     this.fireBaseDataService.getHumidities(timeRequest).subscribe(data => this.loadedIntervalH = this.configureChart(data, this.intervalHumidity, this.intervalHumidityChart), err => setTimeout(() => this.loadHumidity(timeRequest), 10 * 1000));
   }
 
   //Pressure
   loadPressure(timeRequest: TimeRequest) {
+    this.loadedIntervalP = false;
     this.intervalPressure.title = this.formatDateTime(timeRequest.startDateTime.toISOString()) + ' - ' + this.formatDateTime(timeRequest.endDateTime.toISOString());
     this.fireBaseDataService.getPressures(timeRequest).subscribe(data => this.loadedIntervalP = this.configureChart(data, this.intervalPressure, this.intervalPressureChart), err => setTimeout(() => this.loadPressure(timeRequest), 10 * 1000));
   }
