@@ -46,9 +46,9 @@ export class IntervalMeasureComponent implements OnInit {
   //Handle button event
   loadMeasure(measure: Measures) {
     //Get inputs
-    let sufix: string = measure == Measures.Temperature ? "T" : measure == Measures.Humidity ? "H" : "P";
-    let inputStart: any = document.querySelector("input[name=inputStart" + sufix + "]");
-    let inputEnd: any = document.querySelector("input[name=inputEnd" + sufix + "]");
+    let suffix: string = measure == Measures.Temperature ? "T" : measure == Measures.Humidity ? "H" : "P";
+    let inputStart: any = document.querySelector("input[name=inputStart" + suffix + "]");
+    let inputEnd: any = document.querySelector("input[name=inputEnd" + suffix + "]");
     //Validate datetimes
     if (inputStart.value == "") {
       alert("No se asigno correctamente la fecha y hora de inicio");
@@ -60,7 +60,7 @@ export class IntervalMeasureComponent implements OnInit {
     }
     //Perform a request with the interval
     let timeRequest: TimeRequest = { startDateTime: new Date(inputStart.value), endDateTime: new Date(inputEnd.value) };
-    switch (sufix) {
+    switch (suffix) {
       case "T":
         this.loadTemperature(timeRequest);
         break;
@@ -105,6 +105,11 @@ export class IntervalMeasureComponent implements OnInit {
       chartConfig.data.push(parseFloat(d.value.toFixed(2)));
     });
     //Create chart
+    if( chartTemplate.Chart != null ){
+      //Delete previous chart
+      chartTemplate.Chart.clear();
+      chartTemplate.Chart.destroy();
+    }
     chartTemplate.createChart();
     return true;
   }
@@ -122,11 +127,6 @@ export class IntervalMeasureComponent implements OnInit {
   addHours(date: Date, h: number) {
     date.setTime(date.getTime() + (h * 60 * 60 * 1000));
     return date;
-  }
-
-  //Add x minutes to date
-  addMinutes(date, minutes) {
-    return new Date(date.getTime() + minutes * 60000);
   }
 
   //Classes
