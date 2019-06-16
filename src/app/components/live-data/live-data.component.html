@@ -1,8 +1,8 @@
 <div class="container">
   <!-- Live chart -->
-  <div class="d-flex flex-row">
-    <h1>Datos en vivo</h1>
-    <select class="ml-5" (change)="changeSource($event)">
+  <div class="d-flex form-group row mt-5">
+    <h1 class="col-sm-4">Datos en vivo</h1>
+    <select class="ml-5 form-control col-sm-6" (change)="changeSource($event)">
       <option value="1">Temperatura</option>
       <option value="2">Humedad</option>
       <option value="3">Presión</option>

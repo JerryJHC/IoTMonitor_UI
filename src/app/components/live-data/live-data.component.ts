@@ -2,15 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfig } from 'src/app/models/ChartConfig';
 import { FirebaseDataService } from 'src/app/services/firebasedata.service';
 import { ChartTemplateComponent } from '../charttemplate/charttemplate.component';
-import { Observable, observable } from 'rxjs';
-import { SingleMeasure } from 'src/app/models/SingleMeasure';
-
-//Select list values
-enum Measures {
-  Temperature = 1,
-  Humidity = 2,
-  Pressure = 3
-}
+import { SingleMeasure , Measures } from 'src/app/models/SingleMeasure';
 
 @Component({
   selector: 'app-live-data',

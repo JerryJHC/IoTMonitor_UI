@@ -1,18 +1,89 @@
 <div class="container">
 
   <!-- Historic Charts -->
+
   <!-- Temperature -->
-  <h1>Histórico Temperatura</h1>
+  <div class="mt-5 d-flex form-group row">
+    <h1 class="col-sm-4">Histórico de Temperatura</h1>
+
+    <!-- DateTime -->
+    <div class="col-sm-6 row">
+      <label for="inputStartT" class="col-sm-2 col-form-label">Inicio</label>
+      <input class="form-control" type="datetime-local" name="inputStartT">
+      <label for="inputEndT" class="col-sm-2 col-form-label">Fin</label>
+      <input class="form-control" type="datetime-local" name="inputEndT">
+    </div>
+    <!-- DateTime -->
+
+    <!-- Load button -->
+    <div class="col-sm-2 mt-3">
+      <button class="btn btn-primary ml-5" type="button" (click)="loadMeasures(1)">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+          [ngClass]="setClasses(1)"></span>
+        Aplicar
+      </button>
+    </div>
+    <!-- Load button -->
+
+  </div>
   <app-charttemplate [ChartConfig]="intervalTemperature" #intervalTemperatureChart></app-charttemplate>
+  <!-- Temperature -->
 
   <!-- Humidity -->
-  <h1>Histórico Humedad</h1>
+  <div class="mt-5 d-flex form-group row">
+    <h1 class="col-sm-4">Histórico de Humedad</h1>
+
+    <!-- DateTime -->
+    <div class="col-sm-6 row">
+      <label for="inputStartH" class="col-sm-2 col-form-label">Inicio</label>
+      <input class="form-control" type="datetime-local" name="inputStartH">
+      <label for="inputEndH" class="col-sm-2 col-form-label">Fin</label>
+      <input class="form-control" type="datetime-local" name="inputEndH">
+    </div>
+    <!-- DateTime -->
+
+    <!-- Load button -->
+    <div class="col-sm-2 mt-3">
+      <button class="btn btn-primary ml-5" type="button" (click)="loadMeasures(2)">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+          [ngClass]="setClasses(2)"></span>
+        Aplicar
+      </button>
+    </div>
+    <!-- Load button -->
+
+  </div>
   <app-charttemplate [ChartConfig]="intervalHumidity" #intervalHumidityChart></app-charttemplate>
+  <!-- Humidity -->
 
   <!-- Pressure -->
-  <h1>Histórico Presión</h1>
+  <div class="mt-5 d-flex form-group row">
+    <h1 class="col-sm-4">Histórico de Presión</h1>
+
+    <!-- DateTime -->
+    <div class="col-sm-6 row">
+      <label for="inputStartP" class="col-sm-2 col-form-label">Inicio</label>
+      <input class="form-control" type="datetime-local" name="inputStartP">
+      <label for="inputEndP" class="col-sm-2 col-form-label">Fin</label>
+      <input class="form-control" type="datetime-local" name="inputEndP">
+    </div>
+    <!-- DateTime -->
+
+    <!-- Load button -->
+    <div class="col-sm-2 mt-3">
+      <button class="btn btn-primary ml-5" type="button" (click)="loadMeasures(3)">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+          [ngClass]="setClasses(3)"></span>
+        Aplicar
+      </button>
+    </div>
+    <!-- Load button -->
+
+  </div>
   <app-charttemplate [ChartConfig]="intervalPressure" #intervalPressureChart></app-charttemplate>
-  <!-- Hourly Charts -->
+  <!-- Pressure -->
+
+  <!-- Historic Charts -->
 
   <!--Charts-->
 </div>
